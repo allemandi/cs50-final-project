@@ -1,0 +1,96 @@
+{% extends "layout.html" %}
+
+
+
+{% block title %}
+    Breakdown
+{% endblock %}
+
+{% block main %}
+
+    <hr>
+    <h1> {{ money_list[0]['list_name'] }} </h1>
+
+    <hr>
+
+    <p>Your budget for this list is {{ money_list[0]['budget'] | usd }}.</p>
+
+    {% if  money_list[0]['list_cost'] > 0 %}
+        <p>The total cost of your items is <span style="color: #ff0000; font-weight:bold">{{ money_list[0]['list_cost'] | usd }}</span>, leaving you with a net value of
+        {% if  money_list[0]['net_value'] < 0 %}
+            <span style="color: #ff0000; font-weight:bold">
+        {% else %}
+            <span style="color: #228B22; font-weight:bold">
+        {% endif %}
+
+        {{ money_list[0]['net_value'] | usd }}</span> from your original budget.</p>
+
+    {% else %}
+        <p>You have no items. Your budget of <span style="color: #228B22; font-weight:bold">{{ money_list[0]['net_value'] | usd }} is unchanged</span>.</p>
+
+    {% endif %}
+
+    <p>Your budget is currently
+
+    {% if money_list[0]['net_value'] < 0 %}
+        <span style="color: #ff0000; font-weight:bold">insufficient.</span> You are in a <span style="color: #ff0000; font-weight:bold">deficit</span>.</p>
+        <p>Consider <a href="remove_items">reducing the number of items</a> on this list or <a href="set_budget">readjusting your budget</a> value.</p>
+    {% else %}
+        <span style="color: #228B22; font-weight:bold">sufficient.</span></p>
+    {% endif %}
+
+    {% if money_list[0]['entry_count'] == 0 %}
+        <p>Consider <a href="build">adding items to your list</a>.</p>
+
+    {% elif money_list[0]['entry_count'] == 1 %}
+        <p>There is 1 entry in this list, with a running total of
+            {% if money_list[0]['unit_count'] == 1 %}
+                1 unit.</p>
+            {% else %}
+                {{ money_list[0]['unit_count'] }} units.</p>
+            {% endif %}
+
+    {% else %}
+        <p>There are {{ money_list[0]['entry_count'] }} entries in this list, with a running total of {{ money_list[0]['unit_count'] }} units.</p>
+
+    {% endif %}
+
+    <table class="table table-striped">
+        <!-- set header rows -->
+        <thead>
+            <th>Item Name</th>
+            <th>Number of Items</th>
+            <th>Price per Item</th>
+            <th>Total Cost</th>
+        </thead>
+
+        <!-- get all available item information via the html_list -->
+        {% for html_row in html_list %}
+          <tr>
+            <td>{{ html_row['item_name'] }}</td>
+            <td>{{ html_row['item_num'] }}</td>
+            <td>{{ html_row['item_cost'] | usd }}</td>
+            <td>{{ html_row['item_total'] | usd }}</td>
+
+          </tr>
+        {% endfor %}
+
+        <tr style="font-weight:bold">
+            <td>Total List Cost</td>
+            <td colspan="2">&nbsp;</td>
+            <td>{{ money_list[0]['list_cost'] | usd }}</td>
+
+        </tr>
+
+        <tr style="font-weight:bold">
+            <td>Budget Net Value</td>
+            <td colspan="2">&nbsp;</td>
+            <td>{{ money_list[0]['net_value'] | usd }}</td>
+        </tr>
+
+    </table>
+
+
+
+{% endblock %}
+

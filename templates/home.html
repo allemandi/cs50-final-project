@@ -1,0 +1,75 @@
+{% extends "layout.html" %}
+
+
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+
+
+<p>Use this page to view your saved lists</p>
+<hr>
+{% if any_lists == 0 %}
+<p>
+  <strong>
+    No lists here!
+  </strong>
+  Consider
+  <a class="btn btn-outline-primary btn-sm" href="/build" role="button">
+    building a new list
+  </a>.
+  </p>
+{% endif %}
+
+<div class="card-deck">
+
+{% for html_row in html_valid %}
+
+<div class="card" style="min-width:25%; max-width:30%;">
+  <div class="card-header">
+    <strong>
+    {{ html_row['list_name'] }}
+    </strong>
+    <p class="card-text">Budget: {{ html_row['budget'] | usd }}</p>
+  </div>
+  <div class="scrollable">
+    <div class="card-body">
+      <ul>
+
+        {% for item_row in html_list %}
+          {% if html_row['list_name'] == item_row['list_name'] %}
+          <li>
+
+             <div style="float: left; text-align:left; vertical-align: text-top; max-width:70%;">x {{ item_row['item_num'] }} {{ item_row['item_name'] }}</div>
+              <div style="text-align: right; vertical-align: text-top;">{{ item_row['item_total'] | usd }}</div>
+          </li>
+
+          {% endif %}
+        {% endfor %}
+      </ul>
+      </div>
+
+    </div>
+
+
+    <div class="card-footer">
+
+      <form action="/breakdown" method="post">
+        <button class="btn btn-primary btn-block" type="submit" name="break_value" value="{{ html_row['list_name'] }}" style="margin-top: auto;">Access List Breakdown</button>
+      </form>
+      <medium class="text-muted" style="float: left;">Cost:  {{ html_row['total_cost'] | usd }}</medium>
+      <medium class="text-muted" style="float: right;">Net: {{ html_row['net_value'] | usd }}</medium>
+
+    </div>
+  </div>
+
+
+  {% endfor %}
+  </div>
+
+
+
+{% endblock %}
+

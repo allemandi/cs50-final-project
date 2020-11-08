@@ -1,0 +1,85 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Remove Items
+{% endblock %}
+
+{% block main %}
+
+
+<hr>
+        <h1>{{ money_list[0]['list_name'] }}</h1>
+
+<hr>
+
+
+<form action="/remove_true" method="post">
+    <div class="form-group">
+      <select class="form-control" name="item_id" id="item_id">
+
+        <option disabled selected value>
+            Select Existing Item
+        </option>
+        <!-- Iterate through valid stock options and present options that have at least 1 stock -->
+        {% for html_row in html_list %}
+
+            <option name="{{ html_row['item_id'] }}" value="{{ html_row['item_id'] }}">
+              {{ html_row['item_total'] | usd }} - x{{ html_row['item_num'] }} {{ html_row['item_name'] }}
+
+
+            </option>
+
+        {% endfor %}
+      </select>
+
+        <button class="btn btn-warning" type="submit" name="remove_selection" value="remove_selection">Remove Item from List</button>
+
+    </form>
+
+
+
+
+
+
+<table class="table table-striped">
+    <!-- set header rows -->
+    <thead>
+        <th>Item Name</th>
+        <th>Number of Items</th>
+        <th>Price per Item</th>
+        <th>Total Cost</th>
+    </thead>
+
+    <!-- get all available stock information via the html_list -->
+    {% for html_row in html_list %}
+      <tr>
+        <td>{{ html_row['item_name'] }}</td>
+        <td>{{ html_row['item_num'] }}</td>
+        <td>{{ html_row['item_cost'] | usd }}</td>
+        <td>{{ html_row['item_total'] | usd }}</td>
+
+      </tr>
+    {% endfor %}
+
+    <tr style="font-weight:bold">
+        <td>Total List Cost</td>
+        <td colspan="2">&nbsp;</td>
+        <td>{{ money_list[0]['list_cost'] | usd }}</td>
+
+    </tr>
+
+
+    <tr style="font-weight:bold">
+        <td>Budget Net Value</td>
+        <td colspan="2">&nbsp;</td>
+        <td>{{ money_list[0]['net_value'] | usd }}</td>
+    </tr>
+
+
+
+
+</table>
+
+
+
+{% endblock %}
