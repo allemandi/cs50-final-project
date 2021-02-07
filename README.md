@@ -1,4 +1,4 @@
-# CS50x Final Project - Budget Lists
+## CS50x Final Project - Budget Lists
 
 This project is a web-based application based on budgeting lists and items submitted by a registered user.
 
@@ -6,7 +6,7 @@ This is meant to be an all-purpose, general hybrid between wishlists and budgets
 
 The aim of this exercise is to demonstrate the concept of a visual breakdown of items, units, and prices, all consolidated across cards, tables, and brief text descriptions.
 
-# Disclaimer
+## Disclaimer
 
 This is an application based in part on Harvard CS50x's web track distribution code, from Finance (CS50x Problem Set 8 2020).
 
@@ -14,11 +14,11 @@ Because of the above, the user login and registration features are mostly unmodi
 
 This application makes use of the CS50 library for Python, along with other imported dependencies as outlined in application.py and requirements.txt.
 
-# Languages
+## Languages
 
 This is an application that utilizes Python, Javascript, HTML, CSS, and SQL.
 
-## Database
+### Database
 
 This application makes use of a database.
 
@@ -28,16 +28,17 @@ Once the user is registered, the database also stores the username and the hash 
 
 Flask is used to set information about the user's login session. The tracked session data is passed by the server to query the database. Most commonly, this is used to differentiate between multiple registered users.
 
-# Python Dependencies
+## Python Dependencies
 - cs50
 - Flask
 - Flask-Session
 - requests
 
-# Description (How To Use)
+## Description (How To Use)
 
+The [Youtube video introduction and description can be found here](https://www.youtube.com/watch?v=86e4oyCQ2mM "CS50x Final Project: Budget Lists - Youtube")
 
-## Login and Registration Pages
+### Login and Registration Pages
 
 The user must hold valid login details for full functionality.
 
@@ -49,7 +50,7 @@ Once the user enters their valid login credentials, they are able to access the 
 
 All pages aside from the Login and Registration options should require a valid user login session.
 
-## Home Page
+### Home Page
 
 The Home page can be accessed by click on either the website logo or the navigation bar item marked Home.
 
@@ -61,7 +62,7 @@ If the user has at least one list, a card should show for each available list, l
 
 For each available card, there should also be an Access List Breakdown button, which leads to the Breakdown page.
 
-## Build List Page
+### Build List Page
 
 The Build List page can be accessed by the navigation bar and has three functions.
 
@@ -71,7 +72,7 @@ The second function is the ability to add items onto any existing list. A dropdo
 
 The last function is a summary of all available lists in basic card format. These summary cards provide only the most basic information, such as list title, budget, and item counts. This is a more superficial look into the lists in comparison to the Home page, allowing for a quick glance at general statistics when adding new items to the list. For every item added, the page redirects to itself, updating any changes to the summary cards.
 
-## Breakdown Page
+### Breakdown Page
 
 The Breakdown page is accessed via the Home page, by selecting a specific list. This is the most in depth page currently available to describe the selected list.
 
@@ -81,7 +82,7 @@ Depending on a few basic conditions, the breakdown is able to state if the budge
 
 Beside the table, the breakdown also states the running total of entry, unit, budget, cost, and net values upfront.
 
-## Set Budget Page
+### Set Budget Page
 
 The Set Budget page, accessed via the navigation bar, simply provides all available lists in a selection menu, with an adjacent form field to input a new budget.
 
@@ -90,7 +91,7 @@ The only constraint for this function is that the budget cannot be set to zero o
 Once the relevant values are inputted and the set budget button is selected, the page redirects to itself, where the updated budget value is shown.
 
 
-## Remove Items
+### Remove Items
 
 The Remove Items page, accessed via the nvigation bar, has a few functions.
 
@@ -101,13 +102,13 @@ This page also displays summary cards, for every available list. For each list t
 For any summary card that does not have an item to delete, the option to remove items is disabled on the card. The yellow button is instead a dull grey, and the option cannot be selected.
 
 
-# Executing the application
+## Executing the application
 
 I am aware of the below two methods for executing this application.
 
 Of course, there should be many other methods. The below two are intended for simplicity and for those familiar with the CS50 course.
 
-## CS50 IDE
+### CS50 IDE
 
 - This project's source code was written and developed using CS50's IDE for convenience.
 - Acquire CS50 IDE.
@@ -116,7 +117,7 @@ Of course, there should be many other methods. The below two are intended for si
 - Run the flask application via `flask run`, then open the generated URL.
 - After using the application, use `CTRL + C` to terminate flask server.
 
-## Python (Windows)
+### Python (Windows)
 
 - Install Python
 - Download project files into a local directory.
@@ -131,7 +132,7 @@ Of course, there should be many other methods. The below two are intended for si
 - After using the application, use `CTRL + C` to terminate flask server.
   - `deactivate` in Command Prompt to deactivate the `venv`
 
-# Potential Contributions / Improvements
+## Potential Contributions / Improvements
 
 The below are potential ideas that could further improve upon this concept:
 
@@ -142,6 +143,6 @@ The below are potential ideas that could further improve upon this concept:
 - Share lists with other users.
 - Publically deploy the application online
 
-# License
+## License
 
 MIT
