@@ -104,9 +104,9 @@ For any summary card that does not have an item to delete, the option to remove 
 
 ## Executing the application
 
-I am aware of the below two methods for executing this application.
+I am aware of the below three methods for executing this application.
 
-Of course, there should be many other methods. The below two are intended for simplicity and for those familiar with the CS50 course.
+Of course, there should be many other methods. The below three are intended for simplicity and for those familiar with the CS50 course.
 
 ### CS50 IDE
 
@@ -121,16 +121,23 @@ Of course, there should be many other methods. The below two are intended for si
 
 - Install Python
 - Download project files into a local directory.
-- Using the Command Prompt, `cd` into the local directory
+- Using the Command Prompt, `cd` into the local directory.
   - If this is the first time running the application in the current directory, create a one-time virtual environment `py -3 -m venv venv`.
 - Activate the virtual environment `venv\Scripts\activate`.
   - If this is the first time running the application in the current directory, run `pip install -r requirements.txt` for the dependencies.
 - Set the flask app environment variable for current directory by running `set FLASK_APP=application.py`.
   - This will need to be run every time the Command Prompt is closed.
-  - Alternatively, just rename the app.py file to application.py to skip this step entirely.
+  - Alternatively, just rename the application.py file to app.py to skip this step entirely.
 - Run the flask applicaion via `flask run`, then open the generated URL in your browser.
 - After using the application, use `CTRL + C` to terminate flask server.
   - `deactivate` in Command Prompt to deactivate the `venv`
+
+### Replit IDE
+- Clone/upload project files for repl.
+- Run `pip install -r requirements.txt` for dependencies.
+- Export the flask app environment variable for repl directory by running `export FLASK_APP=application.py`.
+- Run flask application via `flask run --host=0.0.0.0 --port=8080`, then open the generated repl.co URL link found within the preview panel.
+- Use `CTRL + C` to terminate flask server.
 
 ## Potential Contributions / Improvements
 
